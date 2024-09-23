@@ -38,7 +38,9 @@ abstract class TelegramBridge {
 
         runBlocking {
             bot.init()
-            sendMessage(lang.telegram.serverStarted)
+            if (config.events.enableStartMessages) {
+                sendMessage(lang.telegram.serverStarted)
+            }
         }
         registerTelegramHandlers()
         registerMinecraftHandlers()
@@ -53,7 +55,9 @@ abstract class TelegramBridge {
             return
         }
         runBlocking {
-            sendMessage(lang.telegram.serverStopped)
+            if (config.events.enableStopMessages) {
+                sendMessage(lang.telegram.serverStopped)
+            }
             bot.shutdown()
         }
         coroutineScope.cancel()

@@ -65,6 +65,8 @@ data class AdvancementsConfig(
 
 @Serializable
 data class GameEventsConfig(
+    val enableStartMessages: Boolean = true,
+    val enableStopMessages: Boolean = true,
     val advancementMessages: AdvancementsConfig = AdvancementsConfig(),
     val enableDeathMessages: Boolean = true,
     val enableJoinMessages: Boolean = true,
